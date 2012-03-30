@@ -1,0 +1,7 @@
+out/Default/obj.target/helloworld/src/dtrace.o: out/Default/helloworld_provider.h
+
+out/Default/helloworld_provider.h: ../src/helloworld_provider.d
+	dtrace -xnolibs -h -o $@ -s $^
+
+out/Default/obj.target/helloworld/src/helloworld_provider.o: out/Default/obj.target/helloworld/src/dtrace.o
+	dtrace -xnolibs -G -o $@ -s ../src/helloworld_provider.d $^
