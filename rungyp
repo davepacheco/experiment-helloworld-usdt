@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -o errexit
+
+rm -rf build
+gyp --depth=. --generator-output=build
